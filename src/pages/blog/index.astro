@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+const posts = (await getCollection("blog")).sort((a,b)=>new Date(b.data.pubDate).valueOf()-new Date(a.data.pubDate).valueOf());
+---
+<BaseLayout title="Construction Insights | Centribuild Construction Services" description="Construction, renovation, project management, and property maintenance insights from Centribuild Construction Services.">
+  <section class="page-hero"><div class="container"><div class="eyebrow">Insights</div><h1 class="page-title">Construction notes.</h1><p class="page-intro">A simple, SEO-friendly publishing section for project updates, construction guidance, and company news.</p></div></section>
+  <section class="section"><div class="container"><div class="blog-grid">{posts.map(post=><article class="post-card"><div class="meta">{post.data.category} · {post.data.pubDate.toLocaleDateString("en-PH")}</div><h2><a href={`/blog/${post.slug}/`}>{post.data.title}</a></h2><p>{post.data.description}</p><a href={`/blog/${post.slug}/`}>Read article →</a></article>)}</div></div></section>
+</BaseLayout>

@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site, services, standards, reasons, process, projects } from "../data/site.js";
+const featured = projects.slice(-6).reverse();
+---
+<BaseLayout title={`${site.name} | ${site.tagline}`} description="Professional residential and commercial construction, renovation, rehabilitation, roofing, and specialized works by Centribuild Construction Services.">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Construction Services · 2026</div>
+        <h1>Build with <span>certainty.</span></h1>
+        <p>{site.name} is a professional construction firm focused on residential and commercial projects in Metro Manila and nearby areas, with disciplined execution and structured project management.</p>
+        <div class="hero-actions">
+          <a class="btn" href="/contact">Discuss your project</a>
+          <a class="btn secondary" href="/projects">View portfolio</a>
+        </div>
+      </div>
+      <div class="hero-image"><img src="/images/projects/high-end-bungalow.webp" alt="Centribuild residential construction project" /></div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>On Time.<br/>On Point.<br/>Built to Last.</h2>
+        <p class="section-lead">Every project is managed with precision, transparency, and accountability from planning to completion. The goal is straightforward: quality workmanship, reliable timelines, and durable results.</p>
+      </div>
+      <div class="standard-grid">
+        {standards.map(([title,text]) => <div class="standard"><h3>{title}</h3><p>{text}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head"><h2>Core services</h2><p class="section-lead">From general construction to focused renovation, rehabilitation, roofing, and specialty works.</p></div>
+      <div class="cards">
+        {services.map((service, i) => <article class="card"><div class="number">0{i+1}</div><h3>{service.title}</h3><p>{service.text}</p><ul class="list">{service.items.map(item => <li>{item}</li>)}</ul></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><h2>Our process</h2><p class="section-lead">A structured path from assessment and planning through controlled implementation, quality management, and turnover.</p></div>
+      <div class="process">{process.map(([num,title,text]) => <article class="process-item"><div class="process-num">{num}</div><h3>{title}</h3><p>{text}</p></article>)}</div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head"><h2>Selected projects</h2><p class="section-lead">A portfolio spanning residential, commercial, office, restoration, and roofing work.</p></div>
+      <div class="project-grid">
+        {featured.map(project => <article class="project"><img src={project.image} alt={project.title} loading="lazy"/><div class="project-body"><div class="type">{project.type}</div><h3>{project.title}</h3><p>{project.location} · {project.date}</p></div></article>)}
+      </div>
+      <p style="margin-top:30px"><a class="btn" href="/projects">View all projects</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><h2>Why choose Centribuild?</h2><p class="section-lead">The company profile highlights six practical commitments that shape project delivery.</p></div>
+      <div class="reasons">{reasons.map(([title,text]) => <article class="reason"><h3>{title}</h3><p>{text}</p></article>)}</div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container cta-inner"><div><div class="eyebrow" style="color:#fff">Start the conversation</div><h2>Planning your next build or renovation?</h2></div><a class="btn" href="/contact">Contact Centribuild</a></div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site, services, process } from "../data/site.js";
+---
+<BaseLayout title={`Services | ${site.name}`} description="Centribuild construction, renovation, rehabilitation, roofing, and specialized services.">
+  <section class="page-hero"><div class="container"><div class="eyebrow">What we do</div><h1 class="page-title">Construction services</h1><p class="page-intro">Professional services for residential and commercial projects, with disciplined execution and structured project management.</p></div></section>
+  <section class="section"><div class="container"><div class="cards">{services.map((s,i)=><article class="card"><div class="number">0{i+1}</div><h3>{s.title}</h3><p>{s.text}</p><ul class="list">{s.items.map(x=><li>{x}</li>)}</ul></article>)}</div></div></section>
+  <section class="section alt"><div class="container"><div class="section-head"><h2>Delivery process</h2><p class="section-lead">The profile describes a four-stage approach.</p></div><div class="process">{process.map(([n,t,x])=><article class="process-item"><div class="process-num">{n}</div><h3>{t}</h3><p>{x}</p></article>)}</div></div></section>
+</BaseLayout>

@@ -1,0 +1,8 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site, projects } from "../data/site.js";
+---
+<BaseLayout title={`Projects | ${site.name}`} description="Selected Centribuild construction, renovation, restoration, and roofing projects across Metro Manila and nearby areas.">
+  <section class="page-hero"><div class="container"><div class="eyebrow">Project portfolio</div><h1 class="page-title">Built work.</h1><p class="page-intro">Our portfolio reflects Centribuild’s core values of Efficiency, Execution, and Excellence.</p></div></section>
+  <section class="section"><div class="container"><div class="project-grid">{projects.map(project=><article class="project"><img src={project.image} alt={project.title} loading="lazy"/><div class="project-body"><div class="type">{project.type}</div><h3>{project.title}</h3><p>{project.location}<br/>{project.date}</p></div></article>)}</div></div></section>
+</BaseLayout>

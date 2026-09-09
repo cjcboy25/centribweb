@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site.js";
+---
+<BaseLayout title={`Contact | ${site.name}`} description="Contact Centribuild Construction Services for residential and commercial construction projects.">
+  <section class="page-hero"><div class="container"><div class="eyebrow">Let's build</div><h1 class="page-title">Start a project.</h1><p class="page-intro">Share the basic details of your project and the Centribuild team can take the conversation forward.</p></div></section>
+  <section class="section"><div class="container contact-grid">
+    <div class="contact-box"><h3>Direct contact</h3><p><strong>Email</strong><br/><a href={`mailto:${site.email}`}>{site.email}</a></p><p><strong>Phone</strong><br/>{site.phone1} — {site.phone1Label}<br/>{site.phone2} — {site.phone2Label}</p><p><strong>Office</strong><br/>{site.address}</p><p><a class="btn" href={`mailto:${site.email}?subject=Project%20Inquiry`}>Email project inquiry</a></p></div>
+    <div class="contact-box"><h3>What to include</h3><ul class="list"><li>Project type and location</li><li>New construction, renovation, restoration, or roofing scope</li><li>Approximate floor area or project size, if known</li><li>Target schedule</li><li>Plans, photos, or other reference documents, if available</li></ul><p style="color:var(--muted)">The website intentionally does not expose permits, certifications, or an organizational chart at this stage.</p></div>
+  </div></section>
+</BaseLayout>

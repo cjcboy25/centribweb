@@ -1,0 +1,53 @@
+---
+import "../styles/global.css";
+import { site } from "../data/site.js";
+const { title = site.name, description = "Centribuild Construction Services — professional residential and commercial construction, renovation, rehabilitation, and specialized works." } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#ff7626" />
+    <link rel="canonical" href={Astro.url} />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="/" aria-label="Centribuild home">
+          <img src="/images/centribuild-logo.webp" alt="Centribuild Construction Services" />
+        </a>
+        <nav>
+          <a href="/#about">About</a>
+          <a href="/services">Services</a>
+          <a href="/projects">Projects</a>
+          <a href="/blog">Insights</a>
+          <a class="nav-cta" href="/contact">Start a Project</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <img class="footer-logo" src="/images/centribuild-logo.webp" alt="Centribuild Construction Services" />
+          <p>{site.tagline}</p>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <p>{site.email}<br />{site.phone1}<br />{site.phone2}</p>
+        </div>
+        <div>
+          <h3>Office</h3>
+          <p>{site.address}</p>
+          <a href={site.facebook} target="_blank" rel="noreferrer">Facebook</a>
+        </div>
+      </div>
+      <div class="container footer-bottom">© {new Date().getFullYear()} {site.name}. All rights reserved.</div>
+    </footer>
+  </body>
+</html>
